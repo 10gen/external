@@ -1,0 +1,16 @@
+
+
+This is a patch i made that lets you change how labels are made
+
+@@ -584,7 +584,10 @@ PlotKit.Layout.prototype._evaluateLineTicksForXAxis = function() {
+                 var pos = this.xscale * (xvalues[i] - this.minxval);
+                 if ((pos > 1.0) || (pos < 0.0))
+                     continue;
+-                this.xticks.push([pos, xvalues[i]]);
++		var temp = xvalues[i];
++		if ( this.xTickLabeler )
++			temp = this.xTickLabeler( temp );
++                this.xticks.push([pos, temp ]);
+                 tickCount++;
+             }
+             if (tickCount > this.options.xNumberOfTicks)
