@@ -6,7 +6,8 @@
  *
  *--------------------------------------------------------------------------*/
 
-var Prototype = {
+/* un-var global */
+Prototype = {
   Version: '1.6.0.2',
 
   Browser: {
@@ -38,7 +39,8 @@ if (Prototype.Browser.MobileSafari)
 
 
 /* Based on Alex Arnell's inheritance implementation. */
-var Class = {
+/* un-var global */
+Class = {
   create: function() {
     var parent = null, properties = $A(arguments);
     if (Object.isFunction(properties[0]))
@@ -97,7 +99,8 @@ Class.Methods = {
   }
 };
 
-var Abstract = { };
+/* un-var global */
+Abstract = { };
 
 Object.extend = function(destination, source) {
   for (var property in source)
@@ -259,7 +262,8 @@ Date.prototype.toJSON = function() {
     this.getUTCSeconds().toPaddedString(2) + 'Z"';
 };
 
-var Try = {
+/* un-var global */
+Try = {
   these: function() {
     var returnValue;
 
@@ -283,7 +287,8 @@ RegExp.escape = function(str) {
 
 /*--------------------------------------------------------------------------*/
 
-var PeriodicalExecuter = Class.create({
+/* un-var global */
+PeriodicalExecuter = Class.create({
   initialize: function(callback, frequency) {
     this.callback = callback;
     this.frequency = frequency;
@@ -549,7 +554,8 @@ Object.extend(String.prototype.escapeHTML, {
 
 with (String.prototype.escapeHTML) div.appendChild(text);
 
-var Template = Class.create({
+/* un-var global */
+Template = Class.create({
   initialize: function(template, pattern) {
     this.template = template.toString();
     this.pattern = pattern || Template.Pattern;
@@ -584,9 +590,11 @@ var Template = Class.create({
 });
 Template.Pattern = /(^|.|\r|\n)(#\{(.*?)\})/;
 
-var $break = { };
+/* un-var global */
+$break = { };
 
-var Enumerable = {
+/* un-var global */
+Enumerable = {
   each: function(iterator, context) {
     var index = 0;
     iterator = iterator.bind(context);
@@ -985,7 +993,8 @@ function $H(object) {
   return new Hash(object);
 };
 
-var Hash = Class.create(Enumerable, (function() {
+/* un-var global */
+Hash = Class.create(Enumerable, (function() {
 
   function toQueryPair(key, value) {
     if (Object.isUndefined(value)) return key;
@@ -1080,7 +1089,8 @@ var Hash = Class.create(Enumerable, (function() {
 
 Hash.prototype.toTemplateReplacements = Hash.prototype.toObject;
 Hash.from = $H;
-var ObjectRange = Class.create(Enumerable, {
+/* un-var global */
+ObjectRange = Class.create(Enumerable, {
   initialize: function(start, end, exclusive) {
     this.start = start;
     this.end = end;
@@ -1104,11 +1114,13 @@ var ObjectRange = Class.create(Enumerable, {
   }
 });
 
-var $R = function(start, end, exclusive) {
+/* un-var global */
+$R = function(start, end, exclusive) {
   return new ObjectRange(start, end, exclusive);
 };
 
-var Ajax = {
+/* un-var global */
+Ajax = {
   getTransport: function() {
     return Try.these(
       function() {return new XMLHttpRequest()},
@@ -2697,7 +2709,8 @@ document.viewport = {
  * part of YUI-Ext version 0.40, distributed under the terms of an MIT-style
  * license.  Please see http://www.yui-ext.com/ for more information. */
 
-var Selector = Class.create({
+/* un-var global */
+Selector = Class.create({
   initialize: function(expression) {
     this.expression = expression.strip();
     this.compileMatcher();
@@ -2742,7 +2755,7 @@ var Selector = Class.create({
         p = ps[i];
         if (m = e.match(p)) {
           this.matcher.push(Object.isFunction(c[i]) ? c[i](m) :
-    	      new Template(c[i]).evaluate(m));
+              new Template(c[i]).evaluate(m));
           e = e.replace(m[0], '');
           break;
         }
@@ -3081,7 +3094,7 @@ Object.extend(Selector, {
 
     nextElementSibling: function(node) {
       while (node = node.nextSibling)
-	      if (node.nodeType == 1) return node;
+              if (node.nodeType == 1) return node;
       return null;
     },
 
@@ -3372,7 +3385,8 @@ if (Prototype.Browser.IE) {
 function $$() {
   return Selector.findChildElements(document, $A(arguments));
 }
-var Form = {
+/* un-var global */
+Form = {
   reset: function(form) {
     $(form).reset();
     return form;
@@ -3561,8 +3575,10 @@ Form.Element.Methods = {
 
 /*--------------------------------------------------------------------------*/
 
-var Field = Form.Element;
-var $F = Form.Element.Methods.getValue;
+/* un-var global */
+Field = Form.Element;
+/* un-var global */
+$F = Form.Element.Methods.getValue;
 
 /*--------------------------------------------------------------------------*/
 
@@ -4035,11 +4051,13 @@ Object.extend(document, {
 
 Hash.toQueryString = Object.toQueryString;
 
-var Toggle = { display: Element.toggle };
+/* un-var global */
+Toggle = { display: Element.toggle };
 
 Element.Methods.childOf = Element.Methods.descendantOf;
 
-var Insertion = {
+/* un-var global */
+Insertion = {
   Before: function(element, content) {
     return Element.insert(element, {before:content});
   },
@@ -4057,11 +4075,13 @@ var Insertion = {
   }
 };
 
-var $continue = new Error('"throw $continue" is deprecated, use "return" instead');
+/* un-var global */
+$continue = new Error('"throw $continue" is deprecated, use "return" instead');
 
 // This should be moved to script.aculo.us; notice the deprecated methods
 // further below, that map to the newer Element methods.
-var Position = {
+/* un-var global */
+Position = {
   // set to true if needed, warning: firefox performance problems
   // NOT neeeded for page scrolling, only if draggable contained in
   // scrollable elements
