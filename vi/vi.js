@@ -112,6 +112,7 @@ var brokenwords = new Object();
 var suggestions = new Object();
 
 var done_callback = null;
+var write_callback = null;
 
 safewords['jsvi']=true;
 safewords['javascript']=true;
@@ -1597,7 +1598,9 @@ function term_command(s) {
         var zx = term_freeze();
         if (term._formelement) term._formelement.value=zx;
         statustext = '"/tmp/mess4XbCXM" ' + file.length + 'L, '
-            + zx.length + 'C written';
+            + zx.length + 'C written to server';
+	if ( write_callback )
+	    write_callback();
 
     } else if (!emacsen && s.substr(i,(s.length-i)) == 'emacs') {
         statustext = 'EMACS mode enabled. Press M-x vi to use vi mode';
