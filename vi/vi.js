@@ -3000,7 +3000,7 @@ function _redraw_cursor() {
 
 function term_draw_cursor(tf) {
     // maybe use vertical bar if mode==1 hrm?
-    if (!tf || !cursor._opaque) {
+    if ( true || !tf || !cursor._opaque) {
         cursor._opaque = true;
         cursor.style.color = palette[1];
         cursor.style.backgroundColor = palette[0];
@@ -3507,12 +3507,13 @@ function editor( t , cb ) {
     tools.style.right = '0px';
     tools.style.bottom = '0px';
     tools.innerHTML = ''
-        + '<input tabindex="-1" type="button" value="B" style="font-weight:bold;" onClick="term_command(\':F!b\');" />'
-        + '<input tabindex="-1" type="button" value="I" style="font-style:italic;" onClick="term_command(\':F!i\');" />'
-        + '<input tabindex="-1" type="button" value="U" style="text-decoration:underline;" onClick="term_command(\':F!u\');" />'
-        + '&nbsp;'
-        + '<input tabindex="-1" type="button" value="Print" onClick="term_command(\':ha\');" />'
-        + '&nbsp;'
+	//        + '<input tabindex="-1" type="button" value="B" style="font-weight:bold;" onClick="term_command(\':F!b\');" />'
+	//        + '<input tabindex="-1" type="button" value="I" style="font-style:italic;" onClick="term_command(\':F!i\');" />'
+	//        + '<input tabindex="-1" type="button" value="U" style="text-decoration:underline;" onClick="term_command(\':F!u\');" />'
+	//        + '&nbsp;'
+	//        + '<input tabindex="-1" type="button" value="Print" onClick="term_command(\':ha\');" />'
+	+ '<a href="">help</a>'
+	+ '&nbsp;'
         + '<input tabindex="-1" type="button" value="Abort" onClick="term_command(\':q?\');" />'
         + '<input tabindex="-1" type="button" value="Save and Close" onClick="term_command(\':wq\');" />'
 	cursor.onclick = _pass_click;
