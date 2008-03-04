@@ -1588,6 +1588,8 @@ function term_command(s) {
 
     if (cmd2 == 'wq' || cmd == 'x') {
         editor_disable(true);
+	if ( write_callback )
+	    write_callback();
     } else if (cmd == '=') {
         statustext = '' + bottom;
         return;
