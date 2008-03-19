@@ -438,3 +438,60 @@ var ImageDialog = {
 
 ImageDialog.preInit();
 tinyMCEPopup.onInit.add(ImageDialog.init, ImageDialog);
+
+
+
+function smartOptionFinder(oSelect, event) {
+    var sKeyCode = event.keyCode;
+    var sToChar = String.fromCharCode(sKeyCode);
+
+    if ( sKeyCode == 8 ){
+	var temp = oSelect.getAttribute( "finder" );
+	if ( temp && temp.length > 0 )
+	    oSelect.setAttribute( "finder" , temp.substring( 0 , temp.length - 1 ) );
+	
+	sKeyCode = 50;
+	sToChar = "";
+    }
+
+    if( sKeyCode > 47 && sKeyCode < 91 ){
+	
+	sToChar = sToChar.toUpperCase();
+
+	var sNow = new Date().getTime();
+	
+	var oldFinder = oSelect.getAttribute( "finder" );
+	var newFinder = null;
+	
+
+	if ( old == null ){
+	    newFinder = sToChar;
+	} 
+	else if( sNow > parseInt(oSelect.getAttribute("timer"))+2000) { //Rest all;
+	    newFinder = sToChar;
+	} 
+	else {
+	    newFinder += sToChar;
+	}
+
+	oSelect.setAttribute("finder", newFinder )
+	oSelect.setAttribute("timer", sNow)
+
+	var sFinder =  newFinder;
+	var arrOpt = oSelect.options;
+	var iLen = arrOpt.length;
+
+	document.getElementById( "hack" ).innerHTML = sFinder
+
+	for (var i = 0; i < iLen ; i++) {
+	    sTest  = arrOpt[i].text;
+	    if (sTest.toUpperCase().indexOf(sFinder) >= 0) {
+		arrOpt[i].selected = true;
+		break;
+	    }
+	}
+	event.returnValue = false;
+    }
+
+}
+
