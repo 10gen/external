@@ -6,8 +6,7 @@
  *
  *--------------------------------------------------------------------------*/
 
-/* un-var global */
-Prototype = {
+var Prototype = {
   Version: '1.6.0.2',
 
   Browser: {
@@ -39,8 +38,7 @@ if (Prototype.Browser.MobileSafari)
 
 
 /* Based on Alex Arnell's inheritance implementation. */
-/* un-var global */
-Class = {
+var Class = {
   create: function() {
     var parent = null, properties = $A(arguments);
     if (Object.isFunction(properties[0]))
@@ -99,8 +97,7 @@ Class.Methods = {
   }
 };
 
-/* un-var global */
-Abstract = { };
+var Abstract = { };
 
 Object.extend = function(destination, source) {
   for (var property in source)
@@ -262,8 +259,7 @@ Date.prototype.toJSON = function() {
     this.getUTCSeconds().toPaddedString(2) + 'Z"';
 };
 
-/* un-var global */
-Try = {
+var Try = {
   these: function() {
     var returnValue;
 
@@ -287,8 +283,7 @@ RegExp.escape = function(str) {
 
 /*--------------------------------------------------------------------------*/
 
-/* un-var global */
-PeriodicalExecuter = Class.create({
+var PeriodicalExecuter = Class.create({
   initialize: function(callback, frequency) {
     this.callback = callback;
     this.frequency = frequency;
@@ -554,8 +549,7 @@ Object.extend(String.prototype.escapeHTML, {
 
 with (String.prototype.escapeHTML) div.appendChild(text);
 
-/* un-var global */
-Template = Class.create({
+var Template = Class.create({
   initialize: function(template, pattern) {
     this.template = template.toString();
     this.pattern = pattern || Template.Pattern;
@@ -590,11 +584,9 @@ Template = Class.create({
 });
 Template.Pattern = /(^|.|\r|\n)(#\{(.*?)\})/;
 
-/* un-var global */
-$break = { };
+var $break = { };
 
-/* un-var global */
-Enumerable = {
+var Enumerable = {
   each: function(iterator, context) {
     var index = 0;
     iterator = iterator.bind(context);
@@ -993,8 +985,7 @@ function $H(object) {
   return new Hash(object);
 };
 
-/* un-var global */
-Hash = Class.create(Enumerable, (function() {
+var Hash = Class.create(Enumerable, (function() {
 
   function toQueryPair(key, value) {
     if (Object.isUndefined(value)) return key;
@@ -1089,8 +1080,7 @@ Hash = Class.create(Enumerable, (function() {
 
 Hash.prototype.toTemplateReplacements = Hash.prototype.toObject;
 Hash.from = $H;
-/* un-var global */
-ObjectRange = Class.create(Enumerable, {
+var ObjectRange = Class.create(Enumerable, {
   initialize: function(start, end, exclusive) {
     this.start = start;
     this.end = end;
@@ -1114,13 +1104,11 @@ ObjectRange = Class.create(Enumerable, {
   }
 });
 
-/* un-var global */
-$R = function(start, end, exclusive) {
+var $R = function(start, end, exclusive) {
   return new ObjectRange(start, end, exclusive);
 };
 
-/* un-var global */
-Ajax = {
+var Ajax = {
   getTransport: function() {
     return Try.these(
       function() {return new XMLHttpRequest()},
@@ -2709,8 +2697,7 @@ document.viewport = {
  * part of YUI-Ext version 0.40, distributed under the terms of an MIT-style
  * license.  Please see http://www.yui-ext.com/ for more information. */
 
-/* un-var global */
-Selector = Class.create({
+var Selector = Class.create({
   initialize: function(expression) {
     this.expression = expression.strip();
     this.compileMatcher();
@@ -3385,8 +3372,7 @@ if (Prototype.Browser.IE) {
 function $$() {
   return Selector.findChildElements(document, $A(arguments));
 }
-/* un-var global */
-Form = {
+var Form = {
   reset: function(form) {
     $(form).reset();
     return form;
@@ -3575,10 +3561,8 @@ Form.Element.Methods = {
 
 /*--------------------------------------------------------------------------*/
 
-/* un-var global */
-Field = Form.Element;
-/* un-var global */
-$F = Form.Element.Methods.getValue;
+var Field = Form.Element;
+var $F = Form.Element.Methods.getValue;
 
 /*--------------------------------------------------------------------------*/
 
@@ -4051,13 +4035,11 @@ Object.extend(document, {
 
 Hash.toQueryString = Object.toQueryString;
 
-/* un-var global */
-Toggle = { display: Element.toggle };
+var Toggle = { display: Element.toggle };
 
 Element.Methods.childOf = Element.Methods.descendantOf;
 
-/* un-var global */
-Insertion = {
+var Insertion = {
   Before: function(element, content) {
     return Element.insert(element, {before:content});
   },
@@ -4075,13 +4057,11 @@ Insertion = {
   }
 };
 
-/* un-var global */
-$continue = new Error('"throw $continue" is deprecated, use "return" instead');
+var $continue = new Error('"throw $continue" is deprecated, use "return" instead');
 
 // This should be moved to script.aculo.us; notice the deprecated methods
 // further below, that map to the newer Element methods.
-/* un-var global */
-Position = {
+var Position = {
   // set to true if needed, warning: firefox performance problems
   // NOT neeeded for page scrolling, only if draggable contained in
   // scrollable elements
