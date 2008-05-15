@@ -1,0 +1,6 @@
+We've made some changes to stock tinyMCE. These changes are local.diff.
+
+To apply, cd to the directory you need to apply them to, and:
+
+patch -p3 < ../local.diff
+
