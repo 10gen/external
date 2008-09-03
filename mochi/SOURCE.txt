@@ -1,0 +1,4 @@
+http://mochikit.com/
+
+http://svn.mochikit.com/mochikit/trunk/LICENSE.txt
+
